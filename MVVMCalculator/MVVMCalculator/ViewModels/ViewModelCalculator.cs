@@ -108,22 +108,16 @@ namespace MVVMCalculator.ViewModels
                 currentState = 1;
                 this.Result = "0";
             });
-            OnCalculate = new Command<string>(
-                execute: (string parameter) =>
+            OnCalculate = new Command(() =>
                 {
                     if (currentState == 2)
                     {
-                        var result = SimpleCalculator.Calculate(firstNumber, secondNumber, mathOperator);
+                        var result = SimpleCalculator.Calculate(firstNumber, secondNumber, mathOperator);;
                         Result = result.ToString();
                         firstNumber = result;
-                        currentState = -1;
-                        //mathOperator = result;
-                        //currentState = 0;
-                        secondNumber = result;
-                        currentState = 1;
+                        currentState = -1;  
 
                     }
-
                 });
         }
     }
